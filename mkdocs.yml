@@ -1,0 +1,23 @@
+site_name: PocketSOC Documentation
+site_description: Documentation for pocketsoc setup
+
+theme:
+  name: material
+  language: en
+  features:
+    - content.code.copy
+
+
+nav:
+  - Home: index.md
+  - Deployment: deployment.md
+  - Configuration: config.md
+  - Design: design.md
+  - Troubleshooting: common_issues.md
+  - About : about.md
+
+#repo_url: https://github.com/my-repo/project
+#repo_name: "GitHub"
+
+plugins:
+  - search
