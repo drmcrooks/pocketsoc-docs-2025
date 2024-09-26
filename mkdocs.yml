@@ -13,7 +13,6 @@ nav:
   - Deployment: deployment.md
   - Design: design.md
   - Access: access.md
-  - Troubleshooting: common_issues.md
   - About : about.md
 
 #repo_url: https://github.com/my-repo/project
@@ -21,3 +20,6 @@ nav:
 
 plugins:
   - search
+
+copyright: |
+  &copy; 2024 <a href="https://github.com/azahmd"  target="_blank" rel="noopener">PocketSOC</a>

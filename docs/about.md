@@ -1,0 +1,3 @@
+# About 
+
+As part of improving STFC’s cybersecurity posture, the SOC is being set up to address network traffic monitoring capability shortfalls. Since this project was spawned from the Tier-1, and the Tier-1 is part of the Worldwide LHC Computing Grid (WLCG), this is a key forum for us through which knowledge on security in research computing is shared. Security is often a part of this - in fact there is a specific Thematic CERN School of Computing (tCSC) dedicated to security. At tCSC there is a section on SOCs, and PocketSOC is the tool used to give trainees a dedicated training environment.
