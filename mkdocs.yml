@@ -11,8 +11,8 @@ theme:
 nav:
   - Home: index.md
   - Deployment: deployment.md
-  - Configuration: config.md
   - Design: design.md
+  - Access: access.md
   - Troubleshooting: common_issues.md
   - About : about.md
 
