@@ -4,6 +4,9 @@ This is how the PocketSOC architecture works:
 
 - Everything is on a private network
 - Small amount of traffic: lets us focus on things that we trigger
+![Image description](screenshot.png)
+
+
 - Main communication is between client and webserver
     - The only command needed here on client is curl webserver
 
