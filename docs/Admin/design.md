@@ -21,3 +21,9 @@ This is how the PocketSOC architecture works:
 - opensearch and opensearch dashboards use the basic example from opensearch.org
     - Don't use in production!
 - Misp uses JISC docker deployment
+
+# Architecture
+
+The PocketSOC architecture includes several components:
+
+![Image description](architech.png)
