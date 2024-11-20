@@ -17,7 +17,7 @@ This section will cover the steps to install PocketSOC on your system.
 
 ## Prerequisites
 
-- Python 3 & pip
+- Python3 & pip
 - Ansible
 
 Set up a VM from Cloud which will be used as a head node.
@@ -26,7 +26,7 @@ Set up X additional VMs as managed nodes.
 
 On head node install ansible using pip as per Ansible Documentation. 
 ```
-$ python3 -m pip -V
+python3 -m pip -V
 ```
 If pip is available you will see something like this 
 
@@ -35,14 +35,14 @@ pip 21.0.1 from /usr/lib/python3.9/site-packages/pip (python 3.9)
 ```
 If you see `No module named pip` you will need to run.
 ```
-$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-$ python3 get-pip.py --user
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py --user
 ```
 Use pip to install ansible and verify
 ```
-$ python3 -m pip install --user ansible
+python3 -m pip install --user ansible
 
-$ python3 -m pip show ansible OR ansible --version
+python3 -m pip show ansible OR ansible --version
 ```
 
 On head node generate SSH-key
