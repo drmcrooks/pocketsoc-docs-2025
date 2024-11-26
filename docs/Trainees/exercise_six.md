@@ -7,7 +7,7 @@ Having generated some logs using zeek, we're now going to explore MISP.
 2. You should see an "Events" page that's blank
 ![MISP events](images/misp_2.png)
 3. If you click on *Automation* at the bottom of the list of options on the left-hand side, you can find a very detailed set of docs on the API access for MISP. This includes a copy of your API key, so in general be careful when opening this page!
-4. For reference, if you wanted to sync to another instance, you would use the "Remote Servers" option under "Sync Actions" - if you have a look at this, click "Home" to get back to the main screen
+4. For reference, if you wanted to sync to another instance, you would use the "Remote Servers" option under "Sync Actions" - if you have a look at this, click "Home" to get back to the main screen  
 ![MISP sync](images/misp_3.png)
 5. Before we create an event, we want to make sure that all our events will have a TLP setting. Go to "Event Actions" and select "Taxonomies"
 ![MISP taxonomies](images/misp_4.png)
@@ -16,13 +16,13 @@ Having generated some logs using zeek, we're now going to explore MISP.
 7. Let's now explore the "add event" option: this will allow us to generate an event based on the findings of our "malicious" webserver
 ![MISP add](images/misp_5.png)
 8. There are a number of options here: let's look at them:
-    - Date: self explanatory
+    - Date: Set the date to when the event is being recorded or occurred
 	- Distribution:
 	    - Your organisation only: will not be shared outside this instance
 		- This community only: will only be shared with instances in your community
 		- Connected communities: will be shared with any communities connected to yours but no further
 		- All communities: will be shared with any MISP instance any number of hops from you
-	- Threat level: self explanatory
+	- Threat level: severity of the event
 	- Analysis: allows you to specify whether these are your initial findings, part way through an extended analysis, or form the completed version of your findings
 	- Event Info: A brief description of the event
 	- Extends Event: Not used for a new incident, but could be used if you are basing your findings on another event
