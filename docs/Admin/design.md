@@ -11,14 +11,14 @@ This is how the PocketSOC architecture works:
     - The only command needed here on client is curl webserver
 
 - Traffic is routed through router which mirrors it to zeek
-- zeek runs in "standalone" mode, which uses one core for processing and reduces other complexity
+- Zeek runs in "standalone" mode, which uses one core for processing and reduces other complexity
     - good enough for our purposes!
     - zeek here uses the pre-packaged rocky 9 binaries
-- zeek also runs filebeat which ships logs, in JSON format, to logstash
+- Zeek also runs filebeat which ships logs, in JSON format, to logstash
 
-- logstash then processes the logs and ships them to opensearch
+- Logstash then processes the logs and ships them to opensearch
 
-- opensearch and opensearch dashboards use the basic example from opensearch.org
+- OpenSearch and OpenSearch dashboards use the basic example from opensearch.org
     - Don't use in production!
 - Misp uses JISC docker deployment
 

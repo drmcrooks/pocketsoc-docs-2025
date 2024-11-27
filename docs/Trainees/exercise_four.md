@@ -7,14 +7,10 @@ The traffic you can see already is background - DNS requests, etc. We now want t
     ```
     curl http://webserver -o payload  
     ```
-3. Let's get some information about this file - in particular, it's contents...  
-    ```
-    cat payload
-    ```
-4.  ... and MD5 checksum  
-    ```
+3. Let's check the MD5 checksum of this file   
+   ```
     md5sum payload  
-    ```
-5. This forms an extremely simple analysis, but gives us enough to go back to the Dashboards tab  
-6. Before continuing, take a note of the IP address of the webserver, `dig webserver`  
-7. If you would like to pull *benign* data from an external source into another payload file, also take a note of the checksum that is generated  
+   ```  
+4. This forms an extremely simple analysis, but gives us enough to go back to the Dashboards tab  
+5. Before continuing, take a note of the IP address of the webserver, `dig webserver`  
+6. If you would like to pull *benign* data from an external source into another payload file, also take a note of the checksum that is generated  
