@@ -13,7 +13,7 @@ This is how the PocketSOC architecture works:
 - Traffic is routed through router which mirrors it to zeek
 - Zeek runs in "standalone" mode, which uses one core for processing and reduces other complexity
     - good enough for our purposes!
-    - zeek here uses the pre-packaged rocky 9 binaries
+    - zeek here uses the pre-packaged CentOS9 binaries
 - Zeek also runs filebeat which ships logs, in JSON format, to logstash
 
 - Logstash then processes the logs and ships them to opensearch
