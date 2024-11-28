@@ -49,7 +49,7 @@ Copy the `id_rsa.pub` key on to each managed nodes to `~/.ssh/authorized_keys`
 ```ssh-copy-id -i ~/.ssh/id_rsa.pub <IP>```
 
 
-# Set up pockektsoc nodes
+# Set up managed nodes
 
 - Provision a set of VMs as managed nodes - Noting for each the node number and FQDN    
 - Ensure the `~/.ssh/authorized_keys` includes head node public key on each node
