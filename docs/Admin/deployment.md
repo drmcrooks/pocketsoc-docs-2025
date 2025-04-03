@@ -46,6 +46,8 @@ This section will cover the steps to install PocketSOC on your system.
 
 ```sudo dnf install ansible git -y```
 
+4. Make sure that the keypair generated above is present in `~/.ssh/`
+
 ## Set up haproxy node
 
 1. Provision a VM from your openstack environment which will be used as a haproxy node
@@ -60,7 +62,7 @@ This section will cover the steps to install PocketSOC on your system.
 sudo mkdir -p /opt/pocketsoc/certs/
 cd /opt/pocketsoc/certs/
 sudo openssl req -x509 -newkey rsa:4096 -keyout key.pem -out certificate.pem -days 365 -nodes
-sudo cat key.pem >> certificate.pem
+sudo cat key.pem >> certificate.pem # This may need to be done as root
 ```
 
 > **Example options**
@@ -198,8 +200,8 @@ backend default
 
 ## Deploy
 
-1. On head node, in normal user area clone the [Ansible repository](https://github.com/azahmd/pocketsoc-ng-ansible)  
-```git clone https://github.com/azahmd/pocketsoc-ng-ansible ```
+1. On head node, in normal user area clone the [Ansible repository](https://github.com/drmcrooks/pocketsoc-ng-2025-ansible)  
+```git clone https://github.com/drmcrooks/pocketsoc-ng-2025-ansible ```
 
 2. `cd pocketsoc-ng-ansible`
 
