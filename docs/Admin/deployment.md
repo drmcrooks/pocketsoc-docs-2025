@@ -84,7 +84,10 @@ sudo cat key.pem >> certificate.pem # This may need to be done as root
 sudo dnf install haproxy -y
 ```
 
-4. Build your `haproxy.cfg` config file.
+4. Build your `haproxy.cfg` config file. In the following example, we're using an example structure of 4XX0Y for the training node ports
+
+- XX: training node number
+- Y: service port
 
 4A. Common initial sections:
 
@@ -124,17 +127,17 @@ frontend https_frontend
 4C. Config acls - need portainer, opensearch and misp for each node (again example of 40 nodes):
 
 ```
-    acl portainer1 dst_port 1001
+    acl portainer1 dst_port 40101
 ...
-    acl portainer40 dst_port 40001
+    acl portainer40 dst_port 44001
     
-    acl opensearch1 dst_port 1002
+    acl opensearch1 dst_port 40102
 ...
-    acl opensearch40 dst_port 40002
+    acl opensearch40 dst_port 44002
     
-    acl misp1 dst_port 1003
+    acl misp1 dst_port 40103
 ...
-    acl misp40 dst_port 40003
+    acl misp40 dst_port 44003
 ```
 
 4D. Set up `use_backend` rules
@@ -175,12 +178,12 @@ backend opensearch40
     server opensearch_node40 <NODE40_FQDN>:5601 check ssl verify none
     
 backend misp1
-    server misp_node1 <NODE1_FQDN>:1003 check ssl verify none
+    server misp_node1 <NODE1_FQDN>:40103 check ssl verify none
     
 ...
 
 backend misp40
-    server misp_node40 <NODE1_FQDN>:40003 check ssl verify none 
+    server misp_node40 <NODE1_FQDN>:44003 check ssl verify none 
 ```
 
 4F. Include default deny
@@ -209,11 +212,11 @@ backend default
 
 ```
 [trainingvms]
-node-1 ansible_host=<node1_ip> misp_port=1003
-node-2 ansible_host=<node2_ip> misp_port=2003
-node-3 ansible_host=<node3_ip> misp_port=3003
+node-1 ansible_host=<node1_ip> misp_port=40103
+node-2 ansible_host=<node2_ip> misp_port=40203
+node-3 ansible_host=<node3_ip> misp_port=40303
 ...
-node-4 ansible_host=<node4_ip> misp_port=40003
+node-4 ansible_host=<node4_ip> misp_port=44003
 ```
 
 4. Create or edit `pocketsoc-ng_var.env` and include global variables. 
@@ -299,169 +302,169 @@ frontend http_frontend
 
 frontend https_frontend
     bind *:443 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:1001-1003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:2001-2003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:3001-3003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:4001-4003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:5001-5003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:6001-6003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:7001-7003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:8001-8003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:9001-9003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:10001-10003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:11001-11003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:12001-12003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:13001-13003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:14001-14003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:15001-15003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:16001-16003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:17001-17003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:18001-18003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:19001-19003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:20001-20003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:21001-21003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:22001-22003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:23001-23003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:24001-24003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:25001-25003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:26001-26003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:27001-27003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:28001-28003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:29001-29003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:30001-30003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:31001-31003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:32001-32003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:33001-33003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:34001-34003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:35001-35003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:36001-36003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:37001-37003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:38001-38003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:39001-39003 ssl crt /opt/pocketsoc/certs/certificate.pem
-    bind *:40001-40003 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40101-40103 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40201-40203 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40301-40303 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40401-40403 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40501-40503 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40601-40603 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40701-40703 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40801-40803 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:40901-40903 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41001-41003 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41101-41103 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41201-41203 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41301-41303 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41401-41403 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41501-41503 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41601-41603 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41701-41703 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41801-41803 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:41901-41903 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42001-42003 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42101-42103 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42201-42203 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42301-42303 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42401-42403 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42501-42503 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42601-42603 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42701-42703 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42801-42803 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:42901-42903 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43001-43003 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43101-43103 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43201-43203 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43301-43303 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43401-43403 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43501-43503 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43601-43603 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43701-43703 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43801-43803 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:43901-43903 ssl crt /opt/pocketsoc/certs/certificate.pem
+    bind *:44001-44003 ssl crt /opt/pocketsoc/certs/certificate.pem
     
-    acl portainer1 dst_port 1001
-    acl portainer2 dst_port 2001
-    acl portainer3 dst_port 3001
-    acl portainer4 dst_port 4001
-    acl portainer5 dst_port 5001
-    acl portainer6 dst_port 6001
-    acl portainer7 dst_port 7001
-    acl portainer8 dst_port 8001
-    acl portainer9 dst_port 9001
-    acl portainer10 dst_port 10001
-    acl portainer11 dst_port 11001
-    acl portainer12 dst_port 12001
-    acl portainer13 dst_port 13001
-    acl portainer14 dst_port 14001
-    acl portainer15 dst_port 15001
-    acl portainer16 dst_port 16001
-    acl portainer17 dst_port 17001
-    acl portainer18 dst_port 18001
-    acl portainer19 dst_port 19001
-    acl portainer20 dst_port 20001
-    acl portainer21 dst_port 21001
-    acl portainer22 dst_port 22001
-    acl portainer23 dst_port 23001
-    acl portainer24 dst_port 24001
-    acl portainer25 dst_port 25001
-    acl portainer26 dst_port 26001
-    acl portainer27 dst_port 27001
-    acl portainer28 dst_port 28001
-    acl portainer29 dst_port 29001
-    acl portainer30 dst_port 30001
-    acl portainer31 dst_port 31001
-    acl portainer32 dst_port 32001
-    acl portainer33 dst_port 33001
-    acl portainer34 dst_port 34001
-    acl portainer35 dst_port 35001
-    acl portainer36 dst_port 36001
-    acl portainer37 dst_port 37001
-    acl portainer38 dst_port 38001
-    acl portainer39 dst_port 39001
-    acl portainer40 dst_port 40001
+    acl portainer1 dst_port 40101
+    acl portainer2 dst_port 40201
+    acl portainer3 dst_port 40301
+    acl portainer4 dst_port 40401
+    acl portainer5 dst_port 40501
+    acl portainer6 dst_port 40601
+    acl portainer7 dst_port 40701
+    acl portainer8 dst_port 40801
+    acl portainer9 dst_port 40901
+    acl portainer10 dst_port 41001
+    acl portainer11 dst_port 41101
+    acl portainer12 dst_port 41201
+    acl portainer13 dst_port 41301
+    acl portainer14 dst_port 41401
+    acl portainer15 dst_port 41501
+    acl portainer16 dst_port 41601
+    acl portainer17 dst_port 41701
+    acl portainer18 dst_port 41801
+    acl portainer19 dst_port 41901
+    acl portainer20 dst_port 42001
+    acl portainer21 dst_port 42101
+    acl portainer22 dst_port 42201
+    acl portainer23 dst_port 42301
+    acl portainer24 dst_port 42401
+    acl portainer25 dst_port 42501
+    acl portainer26 dst_port 42601
+    acl portainer27 dst_port 42701
+    acl portainer28 dst_port 42801
+    acl portainer29 dst_port 42901
+    acl portainer30 dst_port 43001
+    acl portainer31 dst_port 43101
+    acl portainer32 dst_port 43201
+    acl portainer33 dst_port 43301
+    acl portainer34 dst_port 43401
+    acl portainer35 dst_port 43501
+    acl portainer36 dst_port 43601
+    acl portainer37 dst_port 43701
+    acl portainer38 dst_port 43801
+    acl portainer39 dst_port 43901
+    acl portainer40 dst_port 44001
     
-    acl opensearch1 dst_port 1002
-    acl opensearch2 dst_port 2002
-    acl opensearch3 dst_port 3002
-    acl opensearch4 dst_port 4002
-    acl opensearch5 dst_port 5002
-    acl opensearch6 dst_port 6002
-    acl opensearch7 dst_port 7002
-    acl opensearch8 dst_port 8002
-    acl opensearch9 dst_port 9002
-    acl opensearch10 dst_port 10002
-    acl opensearch11 dst_port 11002
-    acl opensearch12 dst_port 12002
-    acl opensearch13 dst_port 13002
-    acl opensearch14 dst_port 14002
-    acl opensearch15 dst_port 15002
-    acl opensearch16 dst_port 16002
-    acl opensearch17 dst_port 17002
-    acl opensearch18 dst_port 18002
-    acl opensearch19 dst_port 19002
-    acl opensearch20 dst_port 20002
-    acl opensearch21 dst_port 21002
-    acl opensearch22 dst_port 22002
-    acl opensearch23 dst_port 23002
-    acl opensearch24 dst_port 24002
-    acl opensearch25 dst_port 25002
-    acl opensearch26 dst_port 26002
-    acl opensearch27 dst_port 27002
-    acl opensearch28 dst_port 28002
-    acl opensearch29 dst_port 29002
-    acl opensearch30 dst_port 30002
-    acl opensearch31 dst_port 31002
-    acl opensearch32 dst_port 32002
-    acl opensearch33 dst_port 33002
-    acl opensearch34 dst_port 34002
-    acl opensearch35 dst_port 35002
-    acl opensearch36 dst_port 36002
-    acl opensearch37 dst_port 37002
-    acl opensearch38 dst_port 38002
-    acl opensearch39 dst_port 39002
-    acl opensearch40 dst_port 40002
+    acl opensearch1 dst_port 40102
+    acl opensearch2 dst_port 40202
+    acl opensearch3 dst_port 40302
+    acl opensearch4 dst_port 40402
+    acl opensearch5 dst_port 40502
+    acl opensearch6 dst_port 40602
+    acl opensearch7 dst_port 40702
+    acl opensearch8 dst_port 40802
+    acl opensearch9 dst_port 40902
+    acl opensearch10 dst_port 41002
+    acl opensearch11 dst_port 41102
+    acl opensearch12 dst_port 41202
+    acl opensearch13 dst_port 41302
+    acl opensearch14 dst_port 41402
+    acl opensearch15 dst_port 41502
+    acl opensearch16 dst_port 41602
+    acl opensearch17 dst_port 41702
+    acl opensearch18 dst_port 41802
+    acl opensearch19 dst_port 41902
+    acl opensearch20 dst_port 42002
+    acl opensearch21 dst_port 42102
+    acl opensearch22 dst_port 42202
+    acl opensearch23 dst_port 42302
+    acl opensearch24 dst_port 42402
+    acl opensearch25 dst_port 42502
+    acl opensearch26 dst_port 42602
+    acl opensearch27 dst_port 42702
+    acl opensearch28 dst_port 42802
+    acl opensearch29 dst_port 42902
+    acl opensearch30 dst_port 43002
+    acl opensearch31 dst_port 43102
+    acl opensearch32 dst_port 43202
+    acl opensearch33 dst_port 43302
+    acl opensearch34 dst_port 43402
+    acl opensearch35 dst_port 43502
+    acl opensearch36 dst_port 43602
+    acl opensearch37 dst_port 43702
+    acl opensearch38 dst_port 43802
+    acl opensearch39 dst_port 43902
+    acl opensearch40 dst_port 44002
 
-    acl misp1 dst_port 1003
-    acl misp2 dst_port 2003
-    acl misp3 dst_port 3003
-    acl misp4 dst_port 4003
-    acl misp5 dst_port 5003
-    acl misp6 dst_port 6003
-    acl misp7 dst_port 7003
-    acl misp8 dst_port 8003
-    acl misp9 dst_port 9003
-    acl misp10 dst_port 10003
-    acl misp11 dst_port 11003
-    acl misp12 dst_port 12003
-    acl misp13 dst_port 13003
-    acl misp14 dst_port 14003
-    acl misp15 dst_port 15003
-    acl misp16 dst_port 16003
-    acl misp17 dst_port 17003
-    acl misp18 dst_port 18003
-    acl misp19 dst_port 19003
-    acl misp20 dst_port 20003
-    acl misp21 dst_port 21003
-    acl misp22 dst_port 22003
-    acl misp23 dst_port 23003
-    acl misp24 dst_port 24003
-    acl misp25 dst_port 25003
-    acl misp26 dst_port 26003
-    acl misp27 dst_port 27003
-    acl misp28 dst_port 28003
-    acl misp29 dst_port 29003
-    acl misp30 dst_port 30003
-    acl misp31 dst_port 31003
-    acl misp32 dst_port 32003
-    acl misp33 dst_port 33003
-    acl misp34 dst_port 34003
-    acl misp35 dst_port 35003
-    acl misp36 dst_port 36003
-    acl misp37 dst_port 37003
-    acl misp38 dst_port 38003
-    acl misp39 dst_port 39003
-    acl misp40 dst_port 40003
+    acl misp1 dst_port 40103
+    acl misp2 dst_port 40203
+    acl misp3 dst_port 40303
+    acl misp4 dst_port 40403
+    acl misp5 dst_port 40503
+    acl misp6 dst_port 40603
+    acl misp7 dst_port 40703
+    acl misp8 dst_port 40803
+    acl misp9 dst_port 40903
+    acl misp10 dst_port 41003
+    acl misp11 dst_port 41103
+    acl misp12 dst_port 41203
+    acl misp13 dst_port 41303
+    acl misp14 dst_port 41403
+    acl misp15 dst_port 41503
+    acl misp16 dst_port 41603
+    acl misp17 dst_port 41703
+    acl misp18 dst_port 41803
+    acl misp19 dst_port 41903
+    acl misp20 dst_port 42003
+    acl misp21 dst_port 42103
+    acl misp22 dst_port 42203
+    acl misp23 dst_port 42303
+    acl misp24 dst_port 42403
+    acl misp25 dst_port 42503
+    acl misp26 dst_port 42603
+    acl misp27 dst_port 42703
+    acl misp28 dst_port 42803
+    acl misp29 dst_port 42903
+    acl misp30 dst_port 43003
+    acl misp31 dst_port 43103
+    acl misp32 dst_port 43203
+    acl misp33 dst_port 43303
+    acl misp34 dst_port 43403
+    acl misp35 dst_port 43503
+    acl misp36 dst_port 43603
+    acl misp37 dst_port 43703
+    acl misp38 dst_port 43803
+    acl misp39 dst_port 43903
+    acl misp40 dst_port 44003
 
     use_backend portainer1 if portainer1
     use_backend portainer2 if portainer2
@@ -829,124 +832,124 @@ backend opensearch40
     server opensearch_node40 <NODE40_FQDN>:5601 check ssl verify none
 
 backend misp1
-    server misp_node1 <NODE1_FQDN>:1003 check ssl verify none
+    server misp_node1 <NODE1_FQDN>:40103 check ssl verify none
 
 backend misp2
-    server misp_node2 <NODE2_FQDN>:2003 check ssl verify none
+    server misp_node2 <NODE2_FQDN>:40203 check ssl verify none
 
 backend misp3
-    server misp_node3 <NODE3_FQDN>:3003 check ssl verify none
+    server misp_node3 <NODE3_FQDN>:40303 check ssl verify none
 
 backend misp4
-    server misp_node4 <NODE4_FQDN>:4003 check ssl verify none
+    server misp_node4 <NODE4_FQDN>:40403 check ssl verify none
 
 backend misp5
-    server misp_node5 <NODE5_FQDN>:5003 check ssl verify none
+    server misp_node5 <NODE5_FQDN>:40503 check ssl verify none
 
 backend misp6
-    server misp_node6 <NODE6_FQDN>:6003 check ssl verify none
+    server misp_node6 <NODE6_FQDN>:40603 check ssl verify none
 
 backend misp7
-    server misp_node7 <NODE7_FQDN>:7003 check ssl verify none
+    server misp_node7 <NODE7_FQDN>:40703 check ssl verify none
 
 backend misp8
-    server misp_node8 <NODE8_FQDN>:8003 check ssl verify none
+    server misp_node8 <NODE8_FQDN>:40803 check ssl verify none
 
 backend misp9
-    server misp_node9 <NODE9_FQDN>:9003 check ssl verify none
+    server misp_node9 <NODE9_FQDN>:40903 check ssl verify none
 
 backend misp10
-    server misp_node10 <NODE10_FQDN>:10003 check ssl verify none
+    server misp_node10 <NODE10_FQDN>:41003 check ssl verify none
 
 backend misp11
-    server misp_node11 <NODE11_FQDN>:11003 check ssl verify none
+    server misp_node11 <NODE11_FQDN>:41103 check ssl verify none
 
 backend misp12
-    server misp_node12 <NODE12_FQDN>:12003 check ssl verify none
+    server misp_node12 <NODE12_FQDN>:41203 check ssl verify none
 
 backend misp13
-    server misp_node13 <NODE13_FQDN>:13003 check ssl verify none
+    server misp_node13 <NODE13_FQDN>:41303 check ssl verify none
 
 backend misp14
-    server misp_node14 <NODE14_FQDN>:14003 check ssl verify none
+    server misp_node14 <NODE14_FQDN>:41403 check ssl verify none
 
 backend misp15
-    server misp_node15 <NODE15_FQDN>:15003 check ssl verify none
+    server misp_node15 <NODE15_FQDN>:41503 check ssl verify none
 
 backend misp16
-    server misp_node16 <NODE16_FQDN>:16003 check ssl verify none
+    server misp_node16 <NODE16_FQDN>:41603 check ssl verify none
 
 backend misp17
-    server misp_node17 <NODE17_FQDN>:17003 check ssl verify none
+    server misp_node17 <NODE17_FQDN>:41703 check ssl verify none
 
 backend misp18
-    server misp_node18 <NODE18_FQDN>:18003 check ssl verify none
+    server misp_node18 <NODE18_FQDN>:41803 check ssl verify none
 
 backend misp19
-    server misp_node19 <NODE19_FQDN>:19003 check ssl verify none
+    server misp_node19 <NODE19_FQDN>:41903 check ssl verify none
 
 backend misp20
-    server misp_node20 <NODE20_FQDN>:20003 check ssl verify none
+    server misp_node20 <NODE20_FQDN>:42003 check ssl verify none
 
 backend misp21
-    server misp_node21 <NODE21_FQDN>:21003 check ssl verify none
+    server misp_node21 <NODE21_FQDN>:42103 check ssl verify none
 
 backend misp22
-    server misp_node22 <NODE22_FQDN>:22003 check ssl verify none
+    server misp_node22 <NODE22_FQDN>:42203 check ssl verify none
 
 backend misp23
-    server misp_node23 <NODE23_FQDN>:23003 check ssl verify none
+    server misp_node23 <NODE23_FQDN>:42303 check ssl verify none
 
 backend misp24
-    server misp_node24 <NODE24_FQDN>:24003 check ssl verify none
+    server misp_node24 <NODE24_FQDN>:42403 check ssl verify none
 
 backend misp25
-    server misp_node25 <NODE25_FQDN>:25003 check ssl verify none
+    server misp_node25 <NODE25_FQDN>:42503 check ssl verify none
 
 backend misp26
-    server misp_node26 <NODE26_FQDN>:26003 check ssl verify none
+    server misp_node26 <NODE26_FQDN>:42603 check ssl verify none
 
 backend misp27
-    server misp_node27 <NODE27_FQDN>:27003 check ssl verify none
+    server misp_node27 <NODE27_FQDN>:42703 check ssl verify none
 
 backend misp28
-    server misp_node28 <NODE28_FQDN>:28003 check ssl verify none
+    server misp_node28 <NODE28_FQDN>:42803 check ssl verify none
 
 backend misp29
-    server misp_node29 <NODE29_FQDN>:29003 check ssl verify none
+    server misp_node29 <NODE29_FQDN>:42903 check ssl verify none
 
 backend misp30
-    server misp_node30 <NODE30_FQDN>:30003 check ssl verify none
+    server misp_node30 <NODE30_FQDN>:43003 check ssl verify none
 
 backend misp31
-    server misp_node31 <NODE31_FQDN>:31003 check ssl verify none
+    server misp_node31 <NODE31_FQDN>:43103 check ssl verify none
 
 backend misp32
-    server misp_node32 <NODE32_FQDN>:32003 check ssl verify none
+    server misp_node32 <NODE32_FQDN>:43203 check ssl verify none
 
 backend misp33
-    server misp_node33 <NODE33_FQDN>:33003 check ssl verify none
+    server misp_node33 <NODE33_FQDN>:43303 check ssl verify none
 
 backend misp34
-    server misp_node34 <NODE34_FQDN>:34003 check ssl verify none
+    server misp_node34 <NODE34_FQDN>:43403 check ssl verify none
 
 backend misp35
-    server misp_node35 <NODE35_FQDN>:35003 check ssl verify none
+    server misp_node35 <NODE35_FQDN>:43503 check ssl verify none
 
 backend misp36
-    server misp_node36 <NODE36_FQDN>:36003 check ssl verify none
+    server misp_node36 <NODE36_FQDN>:43603 check ssl verify none
 
 backend misp37
-    server misp_node37 <NODE37_FQDN>:37003 check ssl verify none
+    server misp_node37 <NODE37_FQDN>:43703 check ssl verify none
 
 backend misp38
-    server misp_node38 <NODE38_FQDN>:38003 check ssl verify none
+    server misp_node38 <NODE38_FQDN>:43803 check ssl verify none
 
 backend misp39
-    server misp_node39 <NODE39_FQDN>:39003 check ssl verify none
+    server misp_node39 <NODE39_FQDN>:43903 check ssl verify none
 
 backend misp40
-    server misp_node40 <NODE40_FQDN>:40003 check ssl verify none
+    server misp_node40 <NODE40_FQDN>:44003 check ssl verify none
      
 backend default
      http-request deny
