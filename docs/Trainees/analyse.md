@@ -1,4 +1,4 @@
-# Exercise 5: Analyse traffic in OpenSearch Dashboards
+# Analyse traffic in OpenSearch Dashboards
 
 We'll now look at the results of the processing of the traffic you just generated in Opensearch Dashboards.
 

@@ -1,4 +1,4 @@
-# Exercise 2: OpenSearch
+# OpenSearch
 
 In this exercise, we'll setup the OpenSearch Dashboards interface. If you're familiar with OpenSearch Dashboards then feel free to skip ahead, otherwise follow these steps - this is a fresh installation.
 

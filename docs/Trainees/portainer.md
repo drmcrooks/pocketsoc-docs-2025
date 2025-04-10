@@ -1,4 +1,4 @@
-# Exercise 1: Portainer
+# Portainer
 
 In the first exercise, we'll explore the Portainer interface which acts as the orchestrator for this environment. 
 

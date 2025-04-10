@@ -15,12 +15,12 @@ nav:
     - Design: Admin/design.md
   - Trainees:
     - Access: Trainees/access.md
-    - Exercise 1: Trainees/exercise_one.md
-    - Exercise 2: Trainees/exercise_two.md
-    - Exercise 3: Trainees/exercise_three.md
-    - Exercise 4: Trainees/exercise_four.md
-    - Exercise 5: Trainees/exercise_five.md
-    - Exercise 6: Trainees/exercise_six.md
+    - Exercise 1: Trainees/portainer.md
+    - Exercise 2: Trainees/opensearch.md
+    - Exercise 3: Trainees/explore.md
+    - Exercise 4: Trainees/misp.md
+    - Exercise 5: Trainees/generate.md
+    - Exercise 6: Trainees/analyse.md
 
 
 #repo_url: https://github.com/my-repo/project

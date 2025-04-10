@@ -1,4 +1,4 @@
-# Exercise 6: MISP
+# MISP
 
 Having generated some logs using zeek, we're now going to explore MISP.
 

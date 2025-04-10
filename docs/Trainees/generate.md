@@ -1,4 +1,4 @@
-# Exercise 4: Generate some traffic
+# Generate some traffic
 
 The traffic you can see already is background - DNS requests, etc. We now want to generate some traffic of our own that we can identify
 

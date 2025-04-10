@@ -1,4 +1,4 @@
-# Exercise 3: Explore the data
+# Explore the data
 
 We want to narrow down the set of information being shown; by default, each record shows the full message being sent from zeek 
 
