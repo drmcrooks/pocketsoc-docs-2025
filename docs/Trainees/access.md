@@ -1,29 +1,35 @@
 # Access
 
-- We have enough instances for you to work with.
+- There are 15 nodes available; credentials will be made available along with central node URL.
 
-- Each user is able to access their individual containers.
+- Each training node is accessible through a set of ports for each service with schema:
 
-- The connection goes through the available proxy host, which then redirects you to the relevant application.
+    - https://CENTRAL_URL:4XX0Y
+    - XX: client
+    - Y: Service
+        - 1: Portainer
+        - 2: OpenSearch
+        - 3: MISP
 
-- Here's how you can access your applications:
-    - Suppose you have been assigned `node-1`.
-    - To access **Portainer**, append the following to the URL:
+|        | Portainer | OpenSearch | MISP  |
+|--------|-----------|------------|-------|
+| node-1 | 40101     | 40102      | 40103 |
+| node-2 | 40201     | 40202      | 40203 |
+| node-3 | 40301     | 40302      | 40303 |
+| node-4 | 40401     | 40402      | 40403 |
+| node-5 | 40501     | 40502      | 40503 |
+| node-6 | 40601     | 40602      | 40603 |
+| node-7 | 40701     | 40702      | 40703 |
+| node-8 | 40801     | 40802      | 40803 |
+| node-9 | 40901     | 40902      | 40903 |
+| node-10| 41001     | 41002      | 41003 |
+| node-11| 41101     | 41102      | 41103 |
+| node-12| 41201     | 41202      | 41203 |
+| node-13| 41301     | 41302      | 41303 |
+| node-14| 41401     | 41402      | 41403 |
+| node-15| 41501     | 41502      | 41503 |
 
-          ```  
-          host-192-168-1-100.something.com:1001 
-          ```
 
-    - Similarily, to access **OpenSearch**, append the following to the URL:
-    
-          ```  
-          host-192-168-1-100.something.com:1002 
-          ```
 
-    - Finally, to access **MISP**, append the following to the URL: 
 
-          ``` 
-          host-192-168-1-100.something.com:1003 
-          ```
 
-- If you have been assigned `node-2`, you will be using the ports `2001`, `2002`, `2003`
