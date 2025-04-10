@@ -8,19 +8,20 @@ theme:
     - content.code.copy
 
 
-nav:
-  - Home: index.md
-  - Admin:
-    - Deployment: Admin/deployment.md
-    - Design: Admin/design.md
-  - Trainees:
-    - Access: Trainees/access.md
-    - Exercise 1: Trainees/portainer.md
-    - Exercise 2: Trainees/opensearch.md
-    - Exercise 3: Trainees/explore.md
-    - Exercise 4: Trainees/misp.md
-    - Exercise 5: Trainees/generate.md
-    - Exercise 6: Trainees/analyse.md
+nav:    
+  - Access: Trainees/access.md
+  - Exercise 1: Trainees/portainer.md
+  - Exercise 2: Trainees/opensearch.md
+  - Exercise 3: Trainees/explore.md
+  - Exercise 4: Trainees/misp.md
+  - Exercise 5: Trainees/generate.md
+  - Exercise 6: Trainees/analyse.md
+
+#  - Home: index.md
+#  - Admin:
+#    - Deployment: Admin/deployment.md
+#    - Design: Admin/design.md
+#  - Trainees:
 
 
 #repo_url: https://github.com/my-repo/project
@@ -30,4 +31,4 @@ plugins:
   - search
 
 copyright: |
-  &copy; 2024 <a href="https://github.com/azahmd"  target="_blank" rel="noopener">PocketSOC</a>
+  &copy; 2024-2025 <a href="https://github.com/drmcrooks"  target="_blank" rel="noopener">PocketSOC</a>
