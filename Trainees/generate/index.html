@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../exercise_four/">
+        <link rel="prev" href="../misp/">
       
       
-        <link rel="next" href="../exercise_six/">
+        <link rel="next" href="../analyse/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#exercise-5-analyse-traffic-in-opensearch-dashboards" class="md-skip">
+        <a href="#generate-some-traffic" class="md-skip">
           Skip to content
         </a>
       
@@ -372,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_one/" class="md-nav__link">
+      <a href="../portainer/" class="md-nav__link">
         
   
   
@@ -395,7 +395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_two/" class="md-nav__link">
+      <a href="../opensearch/" class="md-nav__link">
         
   
   
@@ -418,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_three/" class="md-nav__link">
+      <a href="../explore/" class="md-nav__link">
         
   
   
@@ -441,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_four/" class="md-nav__link">
+      <a href="../misp/" class="md-nav__link">
         
   
   
@@ -497,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_six/" class="md-nav__link">
+      <a href="../analyse/" class="md-nav__link">
         
   
   
@@ -554,12 +554,17 @@
 
 
 
-<h1 id="exercise-5-analyse-traffic-in-opensearch-dashboards">Exercise 5: Analyse traffic in OpenSearch Dashboards</h1>
-<p>We'll now look at the results of the processing of the traffic you just generated in Opensearch Dashboards.</p>
+<h1 id="generate-some-traffic">Generate some traffic</h1>
+<p>The traffic you can see already is background - DNS requests, etc. We now want to generate some traffic of our own that we can identify</p>
 <ol>
-<li>You should see a spike in traffic from the timestamp where you generated it; or, search for the webserver IP address.</li>
-<li><em>Note</em> in the current build of this environment, zeek may not trigger the <code>file</code> or <code>http</code> analysis; otherwise you would also be able to see <code>zeek-file</code> and <code>zeek-http</code> types available with additional information - including the checksum of the file downloaded.</li>
-<li>Use the magnifying glass to explore the record for one of the connections</li>
+<li>In a Portainer tab, look for the client container and open a terminal</li>
+<li>Do a simple <code>curl</code> command to download a "payload" from our webserver<br />
+<code>curl http://webserver -o payload</code></li>
+<li>Let's check the MD5 checksum of this file <br />
+<code>md5sum payload</code>  </li>
+<li>This forms an extremely simple analysis, but gives us enough to go back to the Dashboards tab  </li>
+<li>Before continuing, take a note of the IP address of the webserver, <code>dig webserver</code>  </li>
+<li>If you would like to pull <em>benign</em> data from an external source into another payload file, also take a note of the checksum that is generated  </li>
 </ol>
 
 

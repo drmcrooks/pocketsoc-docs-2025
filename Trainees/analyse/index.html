@@ -11,10 +11,8 @@
       
       
       
-        <link rel="prev" href="../exercise_one/">
+        <link rel="prev" href="../generate/">
       
-      
-        <link rel="next" href="../exercise_three/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>Exercise 2 - PocketSOC Documentation</title>
+        <title>Exercise 6 - PocketSOC Documentation</title>
       
     
     
@@ -64,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#exercise-2-opensearch" class="md-skip">
+        <a href="#analyse-traffic-in-opensearch-dashboards" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Exercise 2
+              Exercise 6
             
           </span>
         </div>
@@ -372,12 +370,104 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_one/" class="md-nav__link">
+      <a href="../portainer/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Exercise 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opensearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercise 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercise 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../misp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercise 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercise 5
     
   </span>
   
@@ -409,105 +499,13 @@
   
   
   <span class="md-ellipsis">
-    Exercise 2
-    
-  </span>
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../exercise_three/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Exercise 3
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../exercise_four/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Exercise 4
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../exercise_five/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Exercise 5
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../exercise_six/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     Exercise 6
     
   </span>
   
 
       </a>
+      
     </li>
   
 
@@ -554,35 +552,12 @@
 
 
 
-<h1 id="exercise-2-opensearch">Exercise 2: OpenSearch</h1>
-<p>In this exercise, we'll setup the OpenSearch Dashboards interface. If you're familiar with OpenSearch Dashboards then feel free to skip ahead, otherwise follow these steps - this is a fresh installation.</p>
+<h1 id="analyse-traffic-in-opensearch-dashboards">Analyse traffic in OpenSearch Dashboards</h1>
+<p>We'll now look at the results of the processing of the traffic you just generated in Opensearch Dashboards.</p>
 <ol>
-<li>Log in using the credentials on the front page
-<img alt="OpenSearch Dashboards login" src="../images/dashboards_1.png" /></li>
-<li>Select "Explore on my own" (Zeek will provide the data!)
-<img alt="OpenSearch Dashboards explore" src="../images/dashboards_2.png" /></li>
-<li>Dismiss the "new Dashboards" notice
-<img alt="OpenSearch Dashboards dismiss" src="../images/dashboards_3.png" /></li>
-<li>Confirm "private tenant"
-<img alt="OpenSearch Dashboards private" src="../images/dashboards_4.png" /></li>
-<li>You should see this view
-<img alt="OpenSearch Dashboards view" src="../images/dashboards_5.png" /></li>
-<li>Click the three bar menu in the top left and select “Discover”
-<img alt="OpenSearch Dashboards discover" src="../images/dashboards_6.png" /></li>
-<li>Now we need to create an <em>index pattern</em> to select which records to display. Click on “Create index pattern”
-<img alt="OpenSearch Dashboards index" src="../images/dashboards_7.png" /></li>
-<li>You should see something like the following, with <code>opensearch-logstash-zeek-2023.10.12</code>
-<img alt="OpenSearch Dashboards records" src="../images/dashboards_8.png" /></li>
-<li>Enter <code>opensearch-logstash-zeek-*</code> (this will match multiple days): Next step.
-<img alt="OpenSearch Dashboards enter" src="../images/dashboards_9.png" /></li>
-<li>Select @timestamp in the Time field
-<img alt="OpenSearch Dashboards timestamp" src="../images/dashboards_10.png" /></li>
-<li>You should see something like this
-<img alt="OpenSearch Dashboards pattern" src="../images/dashboards_11.png" /></li>
-<li>From the menu select Discover again: at the top left of the window you’ll see “Select a datasource” : choose the index pattern you just created
-<img alt="OpenSearch Dashboards datasource" src="../images/dashboards_12.png" /></li>
-<li>You should see some data: time to explore!
-<img alt="OpenSearch Dashboards data" src="../images/dashboards_13.png" /></li>
+<li>You should see a spike in traffic from the timestamp where you generated it; or, search for the webserver IP address.</li>
+<li><em>Note</em> in the current build of this environment, zeek may not trigger the <code>file</code> or <code>http</code> analysis; otherwise you would also be able to see <code>zeek-file</code> and <code>zeek-http</code> types available with additional information - including the checksum of the file downloaded.</li>
+<li>Use the magnifying glass to explore the record for one of the connections</li>
 </ol>
 
 

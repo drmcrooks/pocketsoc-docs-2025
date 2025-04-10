@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../exercise_three/">
+        <link rel="prev" href="../explore/">
       
       
-        <link rel="next" href="../exercise_five/">
+        <link rel="next" href="../generate/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#exercise-4-generate-some-traffic" class="md-skip">
+        <a href="#misp" class="md-skip">
           Skip to content
         </a>
       
@@ -372,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_one/" class="md-nav__link">
+      <a href="../portainer/" class="md-nav__link">
         
   
   
@@ -395,7 +395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_two/" class="md-nav__link">
+      <a href="../opensearch/" class="md-nav__link">
         
   
   
@@ -418,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_three/" class="md-nav__link">
+      <a href="../explore/" class="md-nav__link">
         
   
   
@@ -474,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_five/" class="md-nav__link">
+      <a href="../generate/" class="md-nav__link">
         
   
   
@@ -497,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exercise_six/" class="md-nav__link">
+      <a href="../analyse/" class="md-nav__link">
         
   
   
@@ -554,17 +554,60 @@
 
 
 
-<h1 id="exercise-4-generate-some-traffic">Exercise 4: Generate some traffic</h1>
-<p>The traffic you can see already is background - DNS requests, etc. We now want to generate some traffic of our own that we can identify</p>
+<h1 id="misp">MISP</h1>
+<p>Having generated some logs using zeek, we're now going to explore MISP.</p>
 <ol>
-<li>In a Portainer tab, look for the client container and open a terminal</li>
-<li>Do a simple <code>curl</code> command to download a "payload" from our webserver<br />
-<code>curl http://webserver -o payload</code></li>
-<li>Let's check the MD5 checksum of this file <br />
-<code>md5sum payload</code>  </li>
-<li>This forms an extremely simple analysis, but gives us enough to go back to the Dashboards tab  </li>
-<li>Before continuing, take a note of the IP address of the webserver, <code>dig webserver</code>  </li>
-<li>If you would like to pull <em>benign</em> data from an external source into another payload file, also take a note of the checksum that is generated  </li>
+<li>Use the link and credentials on the front page to access your MISP website
+<img alt="MISP login" src="../images/misp_1.png" /></li>
+<li>You should see an "Events" page that's blank
+<img alt="MISP events" src="../images/misp_2.png" /></li>
+<li>If you click on <em>Automation</em> at the bottom of the list of options on the left-hand side, you can find a very detailed set of docs on the API access for MISP. This includes a copy of your API key, so in general be careful when opening this page!</li>
+<li>For reference, if you wanted to sync to another instance, you would use the "Remote Servers" option under "Sync Actions" - if you have a look at this, click "Home" to get back to the main screen<br />
+<img alt="MISP sync" src="../images/misp_3.png" /></li>
+<li>Before we create an event, we want to make sure that all our events will have a TLP setting. Go to "Event Actions" and select "Taxonomies"
+<img alt="MISP taxonomies" src="../images/misp_4.png" /></li>
+<li>We want to require TLP and also highlight it: this will make it easier to select when creating an event. Click these two options for TLP and then the "Play" icon to enable (mousing over will confirm which icon to use): click OK to confirm. Then click "enable all" to enable all the tlp options.
+<img alt="MISP enable" src="../images/misp_4a.png" /></li>
+<li>Let's now explore the "add event" option: this will allow us to generate an event based on the findings of our "malicious" webserver
+<img alt="MISP add" src="../images/misp_5.png" /></li>
+<li>There are a number of options here: let's look at them:<ul>
+<li>Date: Set the date to when the event is being recorded or occurred</li>
+<li>Distribution:<ul>
+<li>Your organisation only: will not be shared outside this instance</li>
+<li>This community only: will only be shared with instances in your community</li>
+<li>Connected communities: will be shared with any communities connected to yours but no further</li>
+<li>All communities: will be shared with any MISP instance any number of hops from you</li>
+</ul>
+</li>
+<li>Threat level: severity of the event</li>
+<li>Analysis: allows you to specify whether these are your initial findings, part way through an extended analysis, or form the completed version of your findings</li>
+<li>Event Info: A brief description of the event</li>
+<li>Extends Event: Not used for a new incident, but could be used if you are basing your findings on another event</li>
+</ul>
+</li>
+<li>For Distribution, this can typically be used to set how far your event will be propagated: for our purposes we can stick with "Your Organisation only"</li>
+<li>Enter some explanatory text and options, and click "Submit". You will see some metadata about this event, with some useful warnings about things you may want to add to your event, like attributes!
+<img alt="MISP metadata" src="../images/misp_6.png" /></li>
+<li>We're going to start by adding a TLP tag to our event to indicate the sharing level: this is good practice so that it's always clear which is why we have required it for all of our events. 
+<img alt="MISP tags" src="../images/misp_7.png" /></li>
+<li>We're going to use <code>tlp:amber</code>: choose from the dropdown and Submit.</li>
+<li>If you scroll down, you'll see another warning that we haven't included any attributes, so let's add some now.</li>
+<li>Good practice is, rather than adding individual attributes, to add <em>objects</em>. These allow you to add a set of related attributes - such as all the information about a file, for example, or all information about a URL or domain. </li>
+<li>We'll start by adding a "network" object. Go to Add Object, and start typing "network". Click on that option and you'll see another option dropdown - start typing "domain" and choose "domain:ip"
+<img alt="MISP domainip" src="../images/misp_8.png" /></li>
+<li>This page lets us fill in all the information we have about given domain/ip. We can add:<ul>
+<li>IP: (the IP you identified earlier)</li>
+<li>You might also add first seen/last seen as today</li>
+</ul>
+</li>
+<li>It's good practice to put comments wherever you have the option to, so add comments both to the object itself and the individual attributes, then click Submit. You'll see a review of the information, then click "Create new object" if you're happy. MISP will attempt to validate your entries; if it finds an issue it will alert you before you can proceed.
+<img alt="MISP domainip" src="../images/misp_9.png" /></li>
+<li>You can now see the attributes in the main event page. Note that MISP has highlighted the date in red as these attributes have not been "published" yet; i.e. it will not be propagated to sharing groups, and the attributes will not be available via the API
+<img alt="MISP domainip" src="../images/misp_10.png" /></li>
+<li>MISP uses the idea of working on an "unpublished" event until it has been completed to a certain level: the full results of an initial analysis, for example, or attributes that have not been reviewed by a user with the rights to publish. This means that a team can work on an event safe in the knowledge that the attributes will not be published until a team leader, for example, has provided a cross check.</li>
+<li>To publish, click "Publish no email" on the left hand side. While we would normally inform users of a new event, we have no other users.</li>
+<li>If you return to the home screen and select the event again, you'll see that the dates attached to the attributes are no longer highlighted since the event has been published.</li>
+<li>You can also add additional objects - for example look for the "file" objects where you can add checksums and other file details.</li>
 </ol>
 
 
