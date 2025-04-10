@@ -16,7 +16,7 @@ In this exercise, we'll setup the OpenSearch Dashboards interface. If you're fam
 ![OpenSearch Dashboards discover](images/dashboards_6.png)
 7. Now we need to create an *index pattern* to select which records to display. Click on “Create index pattern”
 ![OpenSearch Dashboards index](images/dashboards_7.png)
-8. You should see something like the following, with `opensearch-logstash-zeek-2023.10.12`
+8. You should see something like the following, with eg `opensearch-logstash-zeek-2025.04.10`
 ![OpenSearch Dashboards records](images/dashboards_8.png)
 9. Enter `opensearch-logstash-zeek-*` (this will match multiple days): Next step.
 ![OpenSearch Dashboards enter](images/dashboards_9.png)
