@@ -394,14 +394,14 @@
 <img alt="Explore icon" src="../images/explore_1.png" /></li>
 <li>Set to refresh every 10 seconds (say)
 <img alt="Explore refresh" src="../images/explore_2.png" /></li>
-<li>Under available fields on the left hand side, scroll and select <code>id.orig_h</code>, <code>id.resp_h</code>. What do these refer to?</li>
-<li>Most of the IPs will start <code>172.[].[].[]</code> - these are the private addresses being used in the environment. You might see other IPs - these will be most likely other addresses: you can check using <code>dig -x [].[].[].[]</code> on <code>lxplus</code>, for example</li>
-<li>Scroll through the other fields to see what is available, then add <code>type</code>: what types of data are being captured?</li>
-<li>Click on the arrow on the left hand side of a record to see a full readout of the information collected  </li>
+<li>Under available fields on the left hand side, scroll and select <code>id.orig_h</code>, <code>id.resp_h</code>. </li>
+<li>Most of the IPs will start <code>172.[].[].[]</code> - these are the private addresses being used in the environment. You might see other IPs - these will be most likely other addresses: you can check using <code>dig -x [].[].[].[]</code> , for example (only for public addresses)</li>
+<li>Click on the arrow on the left hand side of a record to see a full readout of the information collected<br />
+<img alt="Explore magnify" src="../images/explore_3.png" />  </li>
+<li>Compare the outputs for different type of zeek log using the <code>type</code> filter 
+<img alt="Explore magnify" src="../images/explore_5.png" /> </li>
+<li>Set up your display with a scrolling timeline, <code>id.orig_h</code>, <code>id.resp_h</code> and <code>type</code> columns (at least)</li>
 </ol>
-<p><img alt="Explore magnify" src="../images/explore_3.png" /><br />
-7. Compare the outputs for different type of zeek log using the <code>type</code> filter in opensearch dashboards<br />
-<img alt="Explore magnify" src="../images/explore_5.png" /> </p>
 
 
 

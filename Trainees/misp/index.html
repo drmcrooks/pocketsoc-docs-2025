@@ -394,13 +394,12 @@
 <img alt="MISP login" src="../images/misp_1.png" /></li>
 <li>You should see an "Events" page that's blank
 <img alt="MISP events" src="../images/misp_2.png" /></li>
-<li>If you click on <em>Automation</em> at the bottom of the list of options on the left-hand side, you can find a very detailed set of docs on the API access for MISP. This includes a copy of your API key, so in general be careful when opening this page!</li>
-<li>For reference, if you wanted to sync to another instance, you would use the "Remote Servers" option under "Sync Actions" - if you have a look at this, click "Home" to get back to the main screen<br />
-<img alt="MISP sync" src="../images/misp_3.png" /></li>
+<li>If you click on <em>Automation</em> at the bottom of the list of options on the left-hand side, you can find a very detailed set of docs on the API access for MISP.</li>
 <li>Before we create an event, we want to make sure that all our events will have a TLP setting. Go to "Event Actions" and select "Taxonomies"
 <img alt="MISP taxonomies" src="../images/misp_4.png" /></li>
 <li>We want to require TLP and also highlight it: this will make it easier to select when creating an event. Click these two options for TLP and then the "Play" icon to enable (mousing over will confirm which icon to use): click OK to confirm. Then click "enable all" to enable all the tlp options.
 <img alt="MISP enable" src="../images/misp_4a.png" /></li>
+<li>Repeat for PAP</li>
 <li>Let's now explore the "add event" option: this will allow us to generate an event based on the findings of our "malicious" webserver
 <img alt="MISP add" src="../images/misp_5.png" /></li>
 <li>There are a number of options here: let's look at them:<ul>
@@ -408,7 +407,7 @@
 <li>Distribution:<ul>
 <li>Your organisation only: will not be shared outside this instance</li>
 <li>This community only: will only be shared with instances in your community</li>
-<li>Connected communities: will be shared with any communities connected to yours but no further</li>
+<li><strong>Connected communities: will be shared with any communities connected to yours but no further</strong></li>
 <li>All communities: will be shared with any MISP instance any number of hops from you</li>
 </ul>
 </li>
@@ -418,13 +417,13 @@
 <li>Extends Event: Not used for a new incident, but could be used if you are basing your findings on another event</li>
 </ul>
 </li>
-<li>For Distribution, this can typically be used to set how far your event will be propagated: for our purposes we can stick with "Your Organisation only"</li>
+<li>For Distribution, this can typically be used to set how far your event will be propagated</li>
 <li>Enter some explanatory text and options, and click "Submit". You will see some metadata about this event, with some useful warnings about things you may want to add to your event, like attributes!
 <img alt="MISP metadata" src="../images/misp_6.png" /></li>
 <li>We're going to start by adding a TLP tag to our event to indicate the sharing level: this is good practice so that it's always clear which is why we have required it for all of our events. 
 <img alt="MISP tags" src="../images/misp_7.png" /></li>
 <li>We're going to use <code>tlp:amber</code>: choose from the dropdown and Submit.</li>
-<li>If you scroll down, you'll see another warning that we haven't included any attributes, so let's add some now.</li>
+<li>Repeat for PAP:AMBER</li>
 <li>Good practice is, rather than adding individual attributes, to add <em>objects</em>. These allow you to add a set of related attributes - such as all the information about a file, for example, or all information about a URL or domain. </li>
 <li>We'll start by adding a "network" object. Go to Add Object, and start typing "network". Click on that option and you'll see another option dropdown - start typing "domain" and choose "domain:ip"
 <img alt="MISP domainip" src="../images/misp_8.png" /></li>
@@ -441,6 +440,7 @@
 <li>To publish, click "Publish no email" on the left hand side. While we would normally inform users of a new event, we have no other users.</li>
 <li>If you return to the home screen and select the event again, you'll see that the dates attached to the attributes are no longer highlighted since the event has been published.</li>
 <li>You can also add additional objects - for example look for the "file" objects where you can add checksums and other file details.</li>
+<li>Click Publish (no email) - you can review the impact of this change on any remote servers to which you are attached</li>
 </ol>
 
 
